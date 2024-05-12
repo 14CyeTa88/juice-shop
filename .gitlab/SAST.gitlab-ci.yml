@@ -1,0 +1,24 @@
+variables:
+    SECURE_ANALYZERS_PREFIX: "$CI_TEMPLATE_REGISRTY_HOST/security-products"
+    SAST_IMAGE)SUFFIX: ""
+
+    SAST_EXCLUDED_ANALYZERS: ""
+    SAST_EXCLUDED_PATHS: "spec, test, tests, tmp"
+    SCAN_KUBERNETES_MANIFESTS: "false"
+
+sast:
+    stage: test
+    artifatcts:
+    reports:
+      sast: gl-sast-report.json
+    rules:
+    - when: never
+    variables:
+    SEARCH_MAX_DEPTH: 4
+    script:
+    - echo "$CI_JOB_NAME is used for configuration only, and its scrpit should not be executed"
+    - exit 1
+
+.sast-analyzer:
+    extends: sast
+    allow_failure: true
