@@ -1,0 +1,6 @@
+include:
+  - template: SAST.gitlab-ci.yml
+
+variables:
+  SAST_EXCLUDED_PATHS: "frontend/src/assets/private/**"
+  DAST_DISABLED: "true"
